@@ -22,7 +22,7 @@
 		<div id="content">
 		
 		<input type="button" value="Add Customer" 
-		onclick="window.location.href='customer-add'; return false;" 
+		onclick="window.location.href='add'; return false;" 
 		class="add-button" />
 		
 			<table>
@@ -31,12 +31,19 @@
 						<th>Last name</th>
 						<th>First name</th>
 						<th>E-mail</th>
+						<th>Action</th>
 					</tr>
-					<c:forEach var="customer" items="${customers}">
+					<c:forEach var="curCustomer" items="${customers}">
+					
+					<c:url var="customerUpdateLink" value="update">
+						<c:param name="id" value = "${curCustomer.id}" />
+					</c:url>
+						
 						<tr>
-							<td>${customer.firstName}</td>
-							<td>${customer.lastName}</td>
-							<td>${customer.email}</td>
+							<td>${curCustomer.lastName}</td>
+							<td>${curCustomer.firstName}</td>
+							<td>${curCustomer.email}</td>
+							<td><a href="${customerUpdateLink}">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

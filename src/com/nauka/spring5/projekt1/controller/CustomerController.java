@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.nauka.spring5.projekt1.domain.Customer;
 import com.nauka.spring5.projekt1.service.CustomerService;
 
@@ -25,15 +27,22 @@ public class CustomerController {
 		return "customer-list";
 	}
 	
-	@RequestMapping("/customer-add")
+	@RequestMapping("/add")
 	public String addCustomer(Model model) {
 		model.addAttribute("customer", new Customer());
-		return "customer-add";
+		return "customer-form";
 	}
 	
-	@PostMapping("/saveCustomer")
+	@RequestMapping("/update")
+	public String updateCustomer(Model model, @RequestParam("id") int id) {
+		Customer customer = customerService.getCustomer(id);
+		model.addAttribute("customer", customer);
+		return "customer-form";
+	}
+	
+	@PostMapping("/save")
 	public String saveCustomer(@ModelAttribute("customer") Customer customer) {
-		customerService.addCustomer(customer);
+		customerService.saveCustomer(customer);
 		return "redirect:/customer/list";
 	}
 }

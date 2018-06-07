@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Add Customer</title>
+<title>Update Customer</title>
 
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -19,13 +19,13 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<h2>CRM Add Customer</h2>
+			<h2>CRM Update Customer</h2>
 		</div>
 	</div>
 
 	<div id="container">
 		<div id="content">
-			<form:form action="saveCustomer" modelAttribute="customer"
+			<form:form action="save" modelAttribute="customer"
 				method="POST">
 				<table>
 					<tbody>
@@ -43,7 +43,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<input type="submit" value="Add" />
+				<input type="submit" value="Save" />
 			</form:form>
 			<div style=""></div>
 			<p>
